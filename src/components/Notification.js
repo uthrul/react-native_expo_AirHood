@@ -47,8 +47,8 @@ export default class Notification extends Component {
       <Animated.View style={[{ marginBottom: positionValue }, styles.wrapper]}>
         <View style={styles.errorMessageContainer}>
           <View style={styles.errorMessage}>
-            <Text style={styles.errorText}>Error</Text>
-            <Text >{firstLine}</Text>
+            <Text style={styles.errorText}>{type}</Text>
+            <Text style={styles.errorMessage}>{firstLine}</Text>
           </View>
           <Text style={styles.errorMessage}>{secondLine}</Text>
         </View>
@@ -58,8 +58,8 @@ export default class Notification extends Component {
         >
           <Icon
             name="times"
-            size={20}
-            color={'lightGray'}
+            size={30}
+            color={'white'}
           />
         </TouchableOpacity>
       </Animated.View>
@@ -77,13 +77,11 @@ Notification.propTypes = {
 
 const styles = StyleSheet.create({
   wrapper: {
-    flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     height: 60,
-    padding: 30,
+    padding: 10,
   },
   notificationContent: {
-    flex: 1,
     flexDirection: 'column',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
@@ -99,6 +97,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 2,
     fontSize: 14,
+    color:'white',
   },
   errorMessageContainer: {
     flexDirection: 'row',

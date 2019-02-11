@@ -28,6 +28,8 @@ export default class Login extends Component {
         const { formValid } = this.state;
         const showNotification = formValid ? false : true;
         const background = formValid ? 'black' : 'red';
+        const notificationMarginTop = showNotification ? 10 : 0;
+
         return (
             <KeyboardAvoidingView
                 style={[{ backgroundColor: background }, styles.wrapper]}
@@ -62,7 +64,7 @@ export default class Login extends Component {
                         handleNextButton={this.handleNextButton}
                     />
                 </View>
-                <View style={showNotification ? { marginTop: 10 } : {}}>
+                <View style={[styles.notificationWrapper, { marginTop: notificationMarginTop }]}>
                     <Notification
                         showNotification={showNotification}
                         handleCloseNotification={this.handleCloseNotification}

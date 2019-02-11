@@ -69,16 +69,15 @@ InputField.propTypes = {
 const styles = StyleSheet.create({
     wrapper: {
         display: 'flex',
+        marginTop: 10,
     },
     label: {
         fontWeight: '700',
-        marginTop: 10,
     },
     inputField: {
         borderBottomWidth: 1,
         paddingTop: 5,
-        paddingBottom: 5,
-        //marginBottom: 30
+        paddingBottom: 20,
     },
     showButton: {
         position: 'absolute',
