@@ -13,17 +13,61 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            formValid: false,
+            formValid: true,
+            validEmail: false,
+            emailAddress: '',
+            validPassword: false,
         };
         this.handleCloseNotification = this.handleCloseNotification.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleNextButton = this.handleNextButton.bind(this)
+        this.toggleNextButtonState = this.toggleNextButtonState.bind(this)
     }
 
     handleNextButton() {
-        alert('next Button pressed')
+        if (this.state.emailAddress === 'hello@imandy.ie' && this.state.validPassword) {
+            this.setState({ formValid: true });
+        } else {
+            this.setState({ formValid: false });
+        }
     }
     handleCloseNotification() {
         this.setState({ formValid: true });
     }
+
+    handleEmailChange(email) {
+        const emailCheckRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        this.setState({ emailAddress: email });
+        if (!this.state.validEmail) {
+            if (emailCheckRegex.test(email)) {
+                this.setState({ validEmail: true });
+            }
+        } else {
+            if (!emailCheckRegex.test(email)) {
+                this.setState({ validEmail: false });
+            }
+        }
+    }
+
+    handlePasswordChange(password) {
+        if (!this.state.validPassword) {
+            if (password.length > 4) {
+                this.setState({ validPassword: true });
+            }
+        } else if (password.length <= 4) {
+            this.setState({ validPassword: flase });
+        }
+    }
+
+    toggleNextButtonState() {
+        const { validEmail, validPassword } = this.state;
+        if (validEmail && validPassword) {
+            return false;
+        }
+        return true;
+    }
+
     render() {
         const { formValid } = this.state;
         const showNotification = formValid ? false : true;
@@ -46,6 +90,7 @@ export default class Login extends Component {
                             borderBottomColor={'white'}
                             inputType="email"
                             customStyle={{ marginBottom: 30 }}
+                            onChangeText={this.handleEmailChange}
                         />
 
                         <InputField
@@ -56,12 +101,14 @@ export default class Login extends Component {
                             borderBottomColor={'white'}
                             inputType="password"
                             customStyle={{ marginBottom: 30 }}
+                            onChangeText={this.handlePasswordChange}
                         />
                     </ScrollView>
                 </View>
                 <View style={styles.nextButton}>
                     <NextArrowButton
                         handleNextButton={this.handleNextButton}
+                        disabled={this.toggleNextButtonState()}
                     />
                 </View>
                 <View style={[styles.notificationWrapper, { marginTop: notificationMarginTop }]}>
