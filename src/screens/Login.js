@@ -22,6 +22,7 @@ export default class Login extends Component {
         return (
             <KeyboardAvoidingView
                 style={styles.wrapper}
+                behavior="padding"
             >
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
@@ -33,7 +34,7 @@ export default class Login extends Component {
                             textColor={'white'}
                             borderBottomColor={'white'}
                             inputType="email"
-                            customeStyle={{ marginBottom: 30, }}
+                            customStyle={{ marginBottom: 30 }}
                         />
 
                         <InputField
@@ -43,14 +44,15 @@ export default class Login extends Component {
                             textColor={'white'}
                             borderBottomColor={'white'}
                             inputType="password"
-                            customeStyle={{ marginBottom: 30, }}
+                            customStyle={{ marginBottom: 30 }}
                         />
                     </ScrollView>
                 </View>
-                <NextArrowButton
-                    style={styles.nextButton}
-                    handleNextButton={this.handleNextButton}
-                />
+                <View style={styles.nextButton}>
+                    <NextArrowButton
+                        handleNextButton={this.handleNextButton}
+                    />
+                </View>
             </KeyboardAvoidingView>
         );
     }
