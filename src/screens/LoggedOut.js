@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, } from 'react-native';
 import RoundedButton from '../components/buttons/RoundedButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
-//import colors from '../../styles/colors';
 
 
 export default class LoggedOut extends Component {
