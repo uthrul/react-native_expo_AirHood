@@ -1,9 +1,3 @@
-/**
- * Airbnb Clone App
- * @author: Andy
- * @Url: https://www.cubui.com
- */
-
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -13,7 +7,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import colors from '../../styles/colors';
 import iPhoneSize from '../../helpers/utils';
 
 const size = iPhoneSize();
@@ -27,8 +20,8 @@ if (size === 'small') {
 
 export default class NextArrowButton extends Component {
   render() {
-  	const { disabled, handleNextButton } = this.props;
-  	const opacityStyle = disabled ? 0.2 : 0.6;
+    const { disabled, handleNextButton } = this.props;
+    const opacityStyle = disabled ? 0.2 : 0.6;
     return (
       <View style={styles.buttonWrapper}>
         <TouchableHighlight
@@ -38,7 +31,7 @@ export default class NextArrowButton extends Component {
         >
           <Icon
             name="angle-right"
-            color={colors.green01}
+            color={'black'}
             size={32}
             style={styles.icon}
           />
@@ -66,7 +59,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     width: buttonSize,
     height: buttonSize,
-    backgroundColor: colors.white,
+    backgroundColor: 'white',
   },
   icon: {
     marginRight: -2,
